@@ -4,3 +4,4 @@ import androidx.compose.ui.graphics.painter.Painter
 
 expect fun getPlatformName(): String
 expect fun getPainter(resourcePath: String): Painter
+expect fun getCurrentDate(): String

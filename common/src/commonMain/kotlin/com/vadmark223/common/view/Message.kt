@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.vadmark223.common.data.Message
+import com.vadmark223.common.getCurrentDate
 
 /**
  * @author Markitanov Vadim
@@ -35,9 +36,8 @@ fun MessageBox(message: Message) {
         Row(
             horizontalArrangement = Arrangement.End
         ) {
-            val currentDate = "Date()"
             Text(
-                text = currentDate,
+                text = getCurrentDate(),
                 style = MaterialTheme.typography.overline,
                 color = Color.Gray
             )
