@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="../../.gradle/caches/transforms-3/feb1f1384828c321cfa61f256f15bf33/transformed/appcompat-resources-1.2.0/res/drawable/abc_vector_test.xml" value="0.1984375" />
+        <entry key="android/src/main/res/drawable/ava.xml" value="0.1828125" />
+        <entry key="common/src/androidMain/res/drawable/ava.xml" value="0.18177083333333333" />
+        <entry key="common/src/androidMain/res/drawable/ava1.xml" value="0.1828125" />
+      </map>
+    </option>
+  </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="corretto-11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>
