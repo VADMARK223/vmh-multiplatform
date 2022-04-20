@@ -45,7 +45,7 @@ fun InputMessage(messagesRepo: MessagesRepo) {
             leadingIcon = {
                 IconButton(
                     onClick = {
-                        println("Add file");
+                        println("Add file")
                     }
                 ) {
                     Icon(Icons.Filled.Add, contentDescription = "Add file")
@@ -55,7 +55,7 @@ fun InputMessage(messagesRepo: MessagesRepo) {
                 Row {
                     IconButton(
                         onClick = {
-                            println("Add emoji");
+                            println("Add emoji")
                         }
                     ) {
                         Icon(Icons.Filled.Face, contentDescription = "Add emoji")
@@ -64,6 +64,7 @@ fun InputMessage(messagesRepo: MessagesRepo) {
                     IconButton(
                         onClick = {
                             messagesRepo.addItem(Message(21, mainOutput.value.text))
+                            mainOutput.value = TextFieldValue("")
                         }
                     ) {
                         Icon(Icons.Filled.Send, contentDescription = "Send message")

@@ -1,17 +1,23 @@
 package com.vadmark223.common.view
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.*
-import androidx.compose.material.Button
-import androidx.compose.material.Text
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.material.FloatingActionButton
+import androidx.compose.material.Icon
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.vadmark223.common.data.Message
 import com.vadmark223.common.repository.MessagesRepo
+import kotlinx.coroutines.launch
 
 /**
  * @author Markitanov Vadim
@@ -28,9 +34,9 @@ fun Messages(modifier: Modifier, messagesRepo: MessagesRepo) {
                 .fillMaxSize()
                 .padding(10.dp),
             state = lazyListState,
-            reverseLayout = false
+            reverseLayout = true
         ) {
-            itemsIndexed(items = messagesRepo.items()/*.reversed()*/) { index, message ->
+            itemsIndexed(items = messagesRepo.items().reversed()) { index, message ->
                 LazyRow(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = when (message.isMy) {
@@ -46,20 +52,22 @@ fun Messages(modifier: Modifier, messagesRepo: MessagesRepo) {
             }
         }
 
-        /*val firstItemVisible by remember {
+        val firstItemVisible = remember {
             derivedStateOf {
                 lazyListState.firstVisibleItemIndex == 0
             }
-        }*/
+        }
 
-        Button(
-            onClick = {
-//                coroutineScope.launch {
-//                    lazyListState.animateScrollToItem(index = 21)
-//                }
+        if (!firstItemVisible.value) {
+            Box(Modifier.fillMaxSize().padding(12.dp), Alignment.BottomEnd) {
+                FloatingActionButton(onClick = {
+                    coroutineScope.launch {
+                        lazyListState.animateScrollToItem(index = 0)
+                    }
+                }) {
+                    Icon(imageVector = Icons.Default.ArrowDropDown, contentDescription = "")
+                }
             }
-        ) {
-            Text("Click")
         }
 
         /*VerticalScrollbar(
