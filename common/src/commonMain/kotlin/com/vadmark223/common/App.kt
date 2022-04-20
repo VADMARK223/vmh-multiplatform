@@ -7,6 +7,8 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import com.vadmark223.common.repository.MessagesRepo
+import com.vadmark223.common.repository.MessagesRepoImpl
 import com.vadmark223.common.resources.darkThemeColors
 import com.vadmark223.common.view.InputMessage
 import com.vadmark223.common.view.Messages
@@ -15,14 +17,17 @@ import com.vadmark223.common.view.UserInfo
 @Composable
 fun App() {
     MaterialTheme(colors = darkThemeColors) {
+        val messagesRepo: MessagesRepo = MessagesRepoImpl()
+
         Column(modifier = Modifier.fillMaxSize()) {
             UserInfo()
             Messages(
                 Modifier
                     .weight(1f)
-                    .background(color = Color(14, 22, 33))
+                    .background(color = Color(14, 22, 33)),
+                messagesRepo
             )
-            InputMessage()
+            InputMessage(messagesRepo)
         }
     }
 }

@@ -16,13 +16,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
+import com.vadmark223.common.data.Message
+import com.vadmark223.common.repository.MessagesRepo
 
 /**
  * @author Markitanov Vadim
  * @since 17.04.2022
  */
 @Composable
-fun InputMessage() {
+fun InputMessage(messagesRepo: MessagesRepo) {
     val mainOutput = remember { mutableStateOf(TextFieldValue("")) }
     Box(modifier = Modifier.fillMaxWidth()) {
         TextField(
@@ -61,7 +63,7 @@ fun InputMessage() {
 
                     IconButton(
                         onClick = {
-                            println("Send message");
+                            messagesRepo.addItem(Message(21, mainOutput.value.text))
                         }
                     ) {
                         Icon(Icons.Filled.Send, contentDescription = "Send message")

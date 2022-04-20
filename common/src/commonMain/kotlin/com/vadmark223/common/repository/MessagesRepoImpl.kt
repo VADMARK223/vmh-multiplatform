@@ -1,5 +1,6 @@
 package com.vadmark223.common.repository
 
+import androidx.compose.runtime.mutableStateListOf
 import com.vadmark223.common.data.Message
 
 /**
@@ -7,19 +8,19 @@ import com.vadmark223.common.data.Message
  * @since 20.04.2022
  */
 class MessagesRepoImpl : MessagesRepo {
-    private val messagesList: ArrayList<Message> = arrayListOf()
+    private val list = mutableStateListOf<Message>()
 
     init {
-        for (x in 0..50) {
-            messagesList.add(Message(x, "Message $x"))
+        for (x in 0..20) {
+            list.add(Message(x, "Message $x"))
         }
     }
 
     override fun items(): List<Message> {
-        return messagesList
+        return list
     }
 
     override fun addItem(item: Message) {
-        messagesList.add(item)
+        list.add(item)
     }
 }
