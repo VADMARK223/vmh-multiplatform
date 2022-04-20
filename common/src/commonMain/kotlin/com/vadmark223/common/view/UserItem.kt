@@ -1,9 +1,7 @@
 package com.vadmark223.common.view
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -15,6 +13,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.vadmark223.common.data.User
 import com.vadmark223.common.getPainter
 import kotlin.random.Random
 
@@ -23,16 +22,13 @@ import kotlin.random.Random
  * @since 20.04.2022
  */
 @Composable
-fun UserItem(fullName: String) {
+fun UserItem(user: User, modifier: Modifier) {
     Box(
-        modifier = Modifier
-            .background(Color(23, 33, 43))
-            .fillMaxWidth()
+        modifier = modifier
     ) {
         Row(
             modifier = Modifier
-                .padding(10.dp)
-                .background(Color(23, 33, 43)),
+                .padding(10.dp),
             horizontalArrangement = Arrangement.spacedBy(20.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -46,7 +42,7 @@ fun UserItem(fullName: String) {
 
             Column {
                 Text(
-                    text = fullName,
+                    text = user.fullName,
                     style = MaterialTheme.typography.h6,
                     maxLines = 2,
                     overflow = TextOverflow.Ellipsis,
