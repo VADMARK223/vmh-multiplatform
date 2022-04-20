@@ -9,7 +9,6 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import com.vadmark223.common.data.Message
 import com.vadmark223.common.repository.MessagesRepo
 import com.vadmark223.common.repository.MessagesRepoImpl
 import com.vadmark223.common.resources.darkThemeColors
@@ -29,10 +28,8 @@ fun App() {
                     .weight(1.0f)
                     .background(Color(14, 22, 33))
                     .fillMaxHeight(),
-                onUserClick = {userId ->
-                    println("Click on $userId")
-                    messagesRepo.clear()
-                    messagesRepo.addItem(Message(1, "aaaa"))
+                onUserClick = { userId ->
+                    messagesRepo.updateByUserId(userId)
                 }
             )
             Column(

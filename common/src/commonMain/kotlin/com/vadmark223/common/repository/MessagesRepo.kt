@@ -10,4 +10,5 @@ interface MessagesRepo {
     fun items(): List<Message>
     fun addItem(item: Message)
     fun clear()
+    fun updateByUserId(userId: Int)
 }
