@@ -1,6 +1,7 @@
 package com.vadmark223.common.view
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -19,7 +20,7 @@ import com.vadmark223.common.repository.UsersRepoImpl
  * @since 20.04.2022
  */
 @Composable
-fun Users(modifier: Modifier) {
+fun Users(modifier: Modifier, onUserClick: (Int) -> Unit) {
     val usersLazyListState = rememberLazyListState()
     val selectedUserId = remember { mutableStateOf(-1) }
     val usersRepo: UsersRepo = UsersRepoImpl()
@@ -38,6 +39,7 @@ fun Users(modifier: Modifier) {
                                 selectedUserId.value = user.id
                             }
                         })
+                    .clickable(onClick = { onUserClick(user.id) })
             )
         }
     }

@@ -23,4 +23,8 @@ class MessagesRepoImpl : MessagesRepo {
     override fun addItem(item: Message) {
         list.add(item)
     }
+
+    override fun clear() {
+        list.clear()
+    }
 }

@@ -9,4 +9,5 @@ import com.vadmark223.common.data.Message
 interface MessagesRepo {
     fun items(): List<Message>
     fun addItem(item: Message)
+    fun clear()
 }
