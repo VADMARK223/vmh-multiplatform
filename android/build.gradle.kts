@@ -13,15 +13,15 @@ repositories {
 
 dependencies {
     implementation(project(":common"))
-    implementation("androidx.activity:activity-compose:1.3.0")
+    implementation("androidx.activity:activity-compose:1.4.0")
 }
 
 android {
-    compileSdkVersion(31)
+    compileSdkVersion(32)
     defaultConfig {
         applicationId = "com.vadmark223.android"
         minSdkVersion(24)
-        targetSdkVersion(31)
+        targetSdkVersion(32)
         versionCode = 1
         versionName = "1.0-SNAPSHOT"
     }
