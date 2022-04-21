@@ -2,33 +2,31 @@ package com.vadmark223.common.repository
 
 import androidx.compose.runtime.mutableStateListOf
 import com.vadmark223.common.data.Message
+import com.vadmark223.common.data.User
 import kotlin.random.Random
 
 /**
  * @author Markitanov Vadim
  * @since 20.04.2022
  */
-class MessagesRepoImpl : MessagesRepo {
+class MessagesRepoImpl(usersRepo: UsersRepo) : MessagesRepo {
     private val messages = mutableStateListOf<Message>()
     private val userMessageMap = mutableMapOf<Int, List<Message>>()
 
     init {
-        userMessageMap[userMessageMap.size] = createRandomMessages()
-//        userMessageMap[userMessageMap.size] = createRandomMessages()
-//        userMessageMap[userMessageMap.size] = createRandomMessages()
-//        userMessageMap[userMessageMap.size] = createRandomMessages()
-//        userMessageMap[userMessageMap.size] = createRandomMessages()
-//        userMessageMap[userMessageMap.size] = createRandomMessages()
+        usersRepo.items().forEach { user ->
+            userMessageMap[userMessageMap.size] = createRandomMessages(user)
+        }
 
         if (userMessageMap.isNotEmpty()) {
             messages.addAll(userMessageMap[0]!!)
         }
     }
 
-    private fun createRandomMessages(): List<Message> {
+    private fun createRandomMessages(user: User): List<Message> {
         val result = mutableStateListOf<Message>()
         for (x in 0..Random.nextInt(1, 20)) {
-            result.add(Message(x, "Message $x"))
+            result.add(Message(x, "${user.fullName} $x"))
         }
 
         return result
@@ -38,16 +36,16 @@ class MessagesRepoImpl : MessagesRepo {
         return messages
     }
 
-    override fun addItem(item: Message) {
+    override fun addMessage(item: Message) {
         messages.add(item)
     }
 
-    override fun clear() {
+    override fun clearMessages() {
         messages.clear()
     }
 
     override fun updateByUserId(userId: Int) {
-        clear()
+        clearMessages()
         userMessageMap[userId]?.let { messages.addAll(it) }
     }
 

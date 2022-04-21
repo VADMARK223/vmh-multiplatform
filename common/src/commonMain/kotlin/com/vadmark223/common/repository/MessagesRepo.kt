@@ -8,8 +8,8 @@ import com.vadmark223.common.data.Message
  */
 interface MessagesRepo {
     fun messageList(): List<Message>
-    fun addItem(item: Message)
-    fun clear()
+    fun addMessage(item: Message)
+    fun clearMessages()
     fun updateByUserId(userId: Int)
     fun messagesByUserId(userId: Int): List<Message>
 }

@@ -63,7 +63,7 @@ fun InputMessage(messagesRepo: MessagesRepo) {
 
                     IconButton(
                         onClick = {
-                            messagesRepo.addItem(Message(21, mainOutput.value.text))
+                            messagesRepo.addMessage(Message(21, mainOutput.value.text))
                             mainOutput.value = TextFieldValue("")
                         }
                     ) {

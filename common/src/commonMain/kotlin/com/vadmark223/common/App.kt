@@ -23,7 +23,7 @@ import com.vadmark223.common.view.Users
 fun App() {
     MaterialTheme(colors = darkThemeColors) {
         val usersRepo: UsersRepo = UsersRepoImpl()
-        val messagesRepo: MessagesRepo = MessagesRepoImpl()
+        val messagesRepo: MessagesRepo = MessagesRepoImpl(usersRepo)
 
         Row {
             Users(
