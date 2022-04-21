@@ -15,6 +15,8 @@ class UsersRepoImpl : UsersRepo {
         list.add(User(1, "Ималетдинов Роман"))
         list.add(User(2, "Доронин Герман"))
         list.add(User(3, "Трищакин Михаил"))
+        list.add(User(4, "Анисимов Роман"))
+        list.add(User(5, "Станченко Иван"))
     }
 
     override fun items(): List<User> {

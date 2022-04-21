@@ -11,6 +11,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import com.vadmark223.common.repository.MessagesRepo
 import com.vadmark223.common.repository.MessagesRepoImpl
+import com.vadmark223.common.repository.UsersRepo
+import com.vadmark223.common.repository.UsersRepoImpl
 import com.vadmark223.common.resources.darkThemeColors
 import com.vadmark223.common.view.InputMessage
 import com.vadmark223.common.view.Messages
@@ -20,10 +22,12 @@ import com.vadmark223.common.view.Users
 @Composable
 fun App() {
     MaterialTheme(colors = darkThemeColors) {
+        val usersRepo: UsersRepo = UsersRepoImpl()
         val messagesRepo: MessagesRepo = MessagesRepoImpl()
 
         Row {
             Users(
+                repo = usersRepo,
                 modifier = Modifier
                     .weight(1.0f)
                     .background(Color(14, 22, 33))

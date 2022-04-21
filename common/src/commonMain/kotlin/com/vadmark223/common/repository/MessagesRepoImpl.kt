@@ -9,53 +9,49 @@ import kotlin.random.Random
  * @since 20.04.2022
  */
 class MessagesRepoImpl : MessagesRepo {
-    private val list = mutableStateListOf<Message>()
+    private val messages = mutableStateListOf<Message>()
     private val userMessageMap = mutableMapOf<Int, List<Message>>()
 
     init {
-        val list0 = mutableStateListOf<Message>()
-        for (x in 0..Random.nextInt(1,20)) {
-            list0.add(Message(x, "Message $x"))
-        }
-        userMessageMap[0] = list0
+        userMessageMap[userMessageMap.size] = createRandomMessages()
+//        userMessageMap[userMessageMap.size] = createRandomMessages()
+//        userMessageMap[userMessageMap.size] = createRandomMessages()
+//        userMessageMap[userMessageMap.size] = createRandomMessages()
+//        userMessageMap[userMessageMap.size] = createRandomMessages()
+//        userMessageMap[userMessageMap.size] = createRandomMessages()
 
-        val list1 = mutableStateListOf<Message>()
-        for (x in 0..Random.nextInt(1,20)) {
-            list1.add(Message(x, "Message $x"))
-        }
-        userMessageMap[1] = list1
-
-        val list2 = mutableStateListOf<Message>()
-        for (x in 0..Random.nextInt(1,20)) {
-            list2.add(Message(x, "Message $x"))
-        }
-        userMessageMap[2] = list2
-
-        val list3 = mutableStateListOf<Message>()
-        for (x in 0..Random.nextInt(1,20)) {
-            list3.add(Message(x, "Message $x"))
-        }
-        userMessageMap[3] = list3
-
-        for (x in 0..20) {
-            list.add(Message(x, "Message $x"))
+        if (userMessageMap.isNotEmpty()) {
+            messages.addAll(userMessageMap[0]!!)
         }
     }
 
-    override fun items(): List<Message> {
-        return list
+    private fun createRandomMessages(): List<Message> {
+        val result = mutableStateListOf<Message>()
+        for (x in 0..Random.nextInt(1, 20)) {
+            result.add(Message(x, "Message $x"))
+        }
+
+        return result
+    }
+
+    override fun messageList(): List<Message> {
+        return messages
     }
 
     override fun addItem(item: Message) {
-        list.add(item)
+        messages.add(item)
     }
 
     override fun clear() {
-        list.clear()
+        messages.clear()
     }
 
-    override fun updateByUserId(userId:Int) {
-//        list.clear()
-        userMessageMap[userId]?.let { list.addAll(it) }
+    override fun updateByUserId(userId: Int) {
+        clear()
+        userMessageMap[userId]?.let { messages.addAll(it) }
+    }
+
+    override fun messagesByUserId(userId: Int): List<Message> {
+        return userMessageMap[userId]!!
     }
 }

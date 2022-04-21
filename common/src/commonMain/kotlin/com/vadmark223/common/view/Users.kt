@@ -19,15 +19,14 @@ import com.vadmark223.common.repository.UsersRepoImpl
  * @since 20.04.2022
  */
 @Composable
-fun Users(modifier: Modifier, onUserClick: (Int) -> Unit) {
+fun Users(repo: UsersRepo, modifier: Modifier, onUserClick: (Int) -> Unit) {
     val usersLazyListState = rememberLazyListState()
     val selectedUserId = remember { mutableStateOf(-1) }
-    val usersRepo: UsersRepo = UsersRepoImpl()
     LazyColumn(
         state = usersLazyListState,
         modifier = modifier
     ) {
-        items(items = usersRepo.items()) { user ->
+        items(items = repo.items()) { user ->
             UserItem(
                 user = user, modifier = Modifier
                     .background(if (selectedUserId.value == user.id) Color(43, 82, 120) else Color(23, 33, 43))

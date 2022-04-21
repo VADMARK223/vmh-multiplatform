@@ -36,7 +36,7 @@ fun Messages(modifier: Modifier, messagesRepo: MessagesRepo) {
             state = lazyListState,
             reverseLayout = true
         ) {
-            itemsIndexed(items = messagesRepo.items().reversed()) { index, message ->
+            itemsIndexed(items = messagesRepo.messageList()) { index, message ->
                 LazyRow(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = when (message.isMy) {
@@ -69,6 +69,7 @@ fun Messages(modifier: Modifier, messagesRepo: MessagesRepo) {
                 }
             }
         }
+
 
         /*VerticalScrollbar(
             modifier = Modifier.align(Alignment.CenterEnd).fillMaxHeight(),
