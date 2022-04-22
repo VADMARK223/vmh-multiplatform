@@ -5,11 +5,13 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.vadmark223.common.data.User
 import com.vadmark223.common.getPlatformName
 
 /**
@@ -17,7 +19,7 @@ import com.vadmark223.common.getPlatformName
  * @since 17.04.2022
  */
 @Composable
-fun UserInfo() {
+fun UserInfo(selectedUser: MutableState<User>) {
     val platformName = getPlatformName()
 
     Box(
@@ -34,7 +36,7 @@ fun UserInfo() {
         ) {
             Column {
                 Text(
-                    text = "Markitanov Vadim ($platformName)",
+                    text = "${selectedUser.value.fullName} ($platformName)",
                     style = MaterialTheme.typography.h6,
                     maxLines = 2,
                     overflow = TextOverflow.Ellipsis,

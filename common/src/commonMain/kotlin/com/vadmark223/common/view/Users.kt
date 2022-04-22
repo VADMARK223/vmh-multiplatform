@@ -7,10 +7,10 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import com.vadmark223.common.data.User
 import com.vadmark223.common.repository.UsersRepo
 import com.vadmark223.common.view.delegate.User
 
@@ -19,9 +19,8 @@ import com.vadmark223.common.view.delegate.User
  * @since 20.04.2022
  */
 @Composable
-fun Users(repo: UsersRepo, modifier: Modifier, onUserClick: (Int) -> Unit) {
+fun Users(selectedUserId: MutableState<Int>, repo: UsersRepo, modifier: Modifier, onUserClick: (User) -> Unit) {
     val usersLazyListState = rememberLazyListState()
-    val selectedUserId = remember { mutableStateOf(-1) }
     LazyColumn(
         state = usersLazyListState,
         modifier = modifier
@@ -37,7 +36,7 @@ fun Users(repo: UsersRepo, modifier: Modifier, onUserClick: (Int) -> Unit) {
                                 selectedUserId.value = user.id
                             }
 
-                            onUserClick(user.id)
+                            onUserClick(user)
                         })
             )
         }

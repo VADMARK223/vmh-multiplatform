@@ -24,4 +24,8 @@ class UsersRepoImpl : UsersRepo {
         return list
     }
 
+    override fun getFirst(): User {
+        return list.first()
+    }
+
 }

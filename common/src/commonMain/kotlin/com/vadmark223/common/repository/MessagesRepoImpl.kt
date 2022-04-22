@@ -42,7 +42,7 @@ class MessagesRepoImpl(usersRepo: UsersRepo) : MessagesRepo {
         messages.clear()
     }
 
-    override fun updateByUserId(userId: Int) {
+    override fun updateMessagesByUserId(userId: Int) {
         clearMessages()
         userMessageMap[userId]?.let { messages.addAll(it) }
     }

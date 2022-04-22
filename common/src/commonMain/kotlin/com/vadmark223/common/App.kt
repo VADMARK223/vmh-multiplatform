@@ -7,6 +7,8 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import com.vadmark223.common.repository.MessagesRepo
@@ -22,18 +24,22 @@ import com.vadmark223.common.view.Users
 @Composable
 fun App() {
     MaterialTheme(colors = darkThemeColors) {
+        val selectedUserId = remember { mutableStateOf(0) }
         val usersRepo: UsersRepo = UsersRepoImpl()
+        val selectedUser = remember { mutableStateOf(usersRepo.getFirst()) }
         val messagesRepo: MessagesRepo = MessagesRepoImpl(usersRepo)
 
         Row {
             Users(
+                selectedUserId,
                 repo = usersRepo,
                 modifier = Modifier
                     .weight(1.0f)
                     .background(Color(14, 22, 33))
                     .fillMaxHeight(),
-                onUserClick = { userId ->
-                    messagesRepo.updateByUserId(userId)
+                onUserClick = { user ->
+                    selectedUser.value = user
+                    messagesRepo.updateMessagesByUserId(user.id)
                 }
             )
             Column(
@@ -41,7 +47,7 @@ fun App() {
                     .fillMaxSize()
                     .weight(2.0f)
             ) {
-                UserInfo()
+                UserInfo(selectedUser)
                 Messages(
                     Modifier
                         .weight(1f)
@@ -51,6 +57,5 @@ fun App() {
                 InputMessage(messagesRepo)
             }
         }
-
     }
 }

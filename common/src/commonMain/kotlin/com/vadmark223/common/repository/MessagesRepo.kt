@@ -10,6 +10,6 @@ interface MessagesRepo {
     fun messageList(): List<Message>
     fun addMessage(item: Message)
     fun clearMessages()
-    fun updateByUserId(userId: Int)
+    fun updateMessagesByUserId(userId: Int)
     fun messagesByUserId(userId: Int): List<Message>
 }
