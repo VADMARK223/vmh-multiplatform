@@ -9,4 +9,5 @@ import com.vadmark223.common.data.User
 interface UsersRepo {
     fun items(): List<User>
     fun getFirst(): User
+    fun createUser(id: Int, fullName: String): User
 }

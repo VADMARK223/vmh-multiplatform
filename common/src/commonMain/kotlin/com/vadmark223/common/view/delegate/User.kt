@@ -15,7 +15,6 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.vadmark223.common.data.User
 import com.vadmark223.common.getPainter
-import kotlin.random.Random
 
 /**
  * @author Markitanov Vadim
@@ -48,13 +47,13 @@ fun User(user: User, modifier: Modifier) {
                     overflow = TextOverflow.Ellipsis,
                     color = Color.White
                 )
-                Text(
+                /*Text(
                     text = "${Random.nextInt(1, 10)} minutes ago",
                     style = MaterialTheme.typography.overline,
                     maxLines = 2,
                     overflow = TextOverflow.Ellipsis,
                     color = Color.Gray
-                )
+                )*/
             }
         }
     }

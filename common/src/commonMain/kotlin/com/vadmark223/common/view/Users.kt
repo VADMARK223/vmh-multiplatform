@@ -34,9 +34,8 @@ fun Users(selectedUser: MutableState<User>, repo: UsersRepo, modifier: Modifier,
                         onClick = {
                             if (selectedUser.value != user) {
                                 selectedUser.value = user
+                                onUserClick(user)
                             }
-
-                            onUserClick(user)
                         })
             )
         }

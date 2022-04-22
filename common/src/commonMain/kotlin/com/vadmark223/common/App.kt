@@ -37,7 +37,7 @@ fun App() {
                     .background(Color(14, 22, 33))
                     .fillMaxHeight(),
                 onUserClick = { user ->
-                    selectedUser.value = user
+//                    selectedUser.value = user
                     messagesRepo.updateMessagesByUserId(user.id)
                 }
             )

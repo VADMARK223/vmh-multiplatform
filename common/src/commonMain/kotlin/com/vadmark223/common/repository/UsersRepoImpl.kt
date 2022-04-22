@@ -2,6 +2,7 @@ package com.vadmark223.common.repository
 
 import androidx.compose.runtime.mutableStateListOf
 import com.vadmark223.common.data.User
+import kotlin.random.Random
 
 /**
  * @author Markitanov Vadim
@@ -11,13 +12,19 @@ class UsersRepoImpl : UsersRepo {
     private val list = mutableStateListOf<User>()
 
     init {
-        list.add(User(0, "Головнев Андрей"))
-        list.add(User(1, "Ималетдинов Роман"))
-        list.add(User(2, "Доронин Герман"))
-        list.add(User(3, "Трищакин Михаил"))
-        list.add(User(4, "Анисимов Роман"))
-        list.add(User(5, "Станченко Иван"))
-        list.add(User(6, "Маркитанов Вадим"))
+        addUser("Васильев Евгений")
+        addUser("Головнев Андрей")
+        addUser("Доронин Герман")
+        addUser("Трищакин Михаил")
+        addUser("Анисимов Роман")
+        addUser("Станченко Иван")
+        addUser("Маркитанов Вадим")
+        addUser("Капустин Дмитрий")
+        addUser("Селиверстова Кристина")
+    }
+
+    private fun addUser(fullName: String) {
+        list.add(createUser(list.size, fullName))
     }
 
     override fun items(): List<User> {
@@ -26,6 +33,10 @@ class UsersRepoImpl : UsersRepo {
 
     override fun getFirst(): User {
         return list.first()
+    }
+
+    override fun createUser(id: Int, fullName: String): User {
+        return User(id, fullName, Random.nextInt(0, 5))
     }
 
 }

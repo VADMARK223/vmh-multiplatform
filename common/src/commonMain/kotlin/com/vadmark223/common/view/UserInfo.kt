@@ -19,7 +19,8 @@ import com.vadmark223.common.getPlatformName
  * @since 17.04.2022
  */
 @Composable
-fun UserInfo(selectedUser: MutableState<User>) {
+fun UserInfo(selectedUserState: MutableState<User>) {
+    val selectedUser = selectedUserState.value
     val platformName = getPlatformName()
 
     Box(
@@ -35,15 +36,17 @@ fun UserInfo(selectedUser: MutableState<User>) {
             verticalAlignment = Alignment.CenterVertically
         ) {
             Column {
+                val minutesAgoText =
+                    if (selectedUser.minutesAgo == 0) "last seen recently" else "${selectedUser.minutesAgo} minutes ago"
                 Text(
-                    text = "${selectedUser.value.fullName} ($platformName)",
+                    text = "${selectedUser.fullName} ($platformName)",
                     style = MaterialTheme.typography.h6,
                     maxLines = 2,
                     overflow = TextOverflow.Ellipsis,
                     color = Color.White
                 )
                 Text(
-                    text = "last seen recently",
+                    text = minutesAgoText,//,
                     style = MaterialTheme.typography.overline,
                     maxLines = 2,
                     overflow = TextOverflow.Ellipsis,
