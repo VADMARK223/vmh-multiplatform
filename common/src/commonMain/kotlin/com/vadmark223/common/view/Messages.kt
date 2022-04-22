@@ -17,6 +17,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.vadmark223.common.repository.MessagesRepo
+import com.vadmark223.common.view.delegate.MessageBox
 import kotlinx.coroutines.launch
 
 /**
@@ -36,7 +37,7 @@ fun Messages(modifier: Modifier, messagesRepo: MessagesRepo) {
             state = lazyListState,
             reverseLayout = true
         ) {
-            itemsIndexed(items = messagesRepo.messageList()) { index, message ->
+            itemsIndexed(items = messagesRepo.messageList().reversed()) { index, message ->
                 LazyRow(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = when (message.isMy) {

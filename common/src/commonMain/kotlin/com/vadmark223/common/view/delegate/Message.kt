@@ -1,4 +1,4 @@
-package com.vadmark223.common.view
+package com.vadmark223.common.view.delegate
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement

@@ -17,10 +17,11 @@ class UsersRepoImpl : UsersRepo {
         list.add(User(3, "Трищакин Михаил"))
         list.add(User(4, "Анисимов Роман"))
         list.add(User(5, "Станченко Иван"))
+        list.add(User(6, "Маркитанов Вадим"))
     }
 
     override fun items(): List<User> {
-        return list;
+        return list
     }
 
 }

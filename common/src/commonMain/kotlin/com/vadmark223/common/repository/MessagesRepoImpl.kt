@@ -18,9 +18,7 @@ class MessagesRepoImpl(usersRepo: UsersRepo) : MessagesRepo {
             userMessageMap[userMessageMap.size] = createRandomMessages(user)
         }
 
-        if (userMessageMap.isNotEmpty()) {
-            messages.addAll(userMessageMap[0]!!)
-        }
+        messages.addAll(userMessageMap[0] ?: mutableStateListOf())
     }
 
     private fun createRandomMessages(user: User): List<Message> {

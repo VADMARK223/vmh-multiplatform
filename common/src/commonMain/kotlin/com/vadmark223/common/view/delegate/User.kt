@@ -1,4 +1,4 @@
-package com.vadmark223.common.view
+package com.vadmark223.common.view.delegate
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -22,7 +22,7 @@ import kotlin.random.Random
  * @since 20.04.2022
  */
 @Composable
-fun UserItem(user: User, modifier: Modifier) {
+fun User(user: User, modifier: Modifier) {
     Box(
         modifier = modifier
     ) {

@@ -12,7 +12,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import com.vadmark223.common.repository.UsersRepo
-import com.vadmark223.common.repository.UsersRepoImpl
+import com.vadmark223.common.view.delegate.User
 
 /**
  * @author Markitanov Vadim
@@ -27,7 +27,7 @@ fun Users(repo: UsersRepo, modifier: Modifier, onUserClick: (Int) -> Unit) {
         modifier = modifier
     ) {
         items(items = repo.items()) { user ->
-            UserItem(
+            User(
                 user = user, modifier = Modifier
                     .background(if (selectedUserId.value == user.id) Color(43, 82, 120) else Color(23, 33, 43))
                     .fillMaxWidth()
