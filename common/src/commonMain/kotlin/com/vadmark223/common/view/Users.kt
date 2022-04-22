@@ -19,7 +19,7 @@ import com.vadmark223.common.view.delegate.User
  * @since 20.04.2022
  */
 @Composable
-fun Users(selectedUserId: MutableState<Int>, repo: UsersRepo, modifier: Modifier, onUserClick: (User) -> Unit) {
+fun Users(selectedUser: MutableState<User>, repo: UsersRepo, modifier: Modifier, onUserClick: (User) -> Unit) {
     val usersLazyListState = rememberLazyListState()
     LazyColumn(
         state = usersLazyListState,
@@ -28,12 +28,12 @@ fun Users(selectedUserId: MutableState<Int>, repo: UsersRepo, modifier: Modifier
         items(items = repo.items()) { user ->
             User(
                 user = user, modifier = Modifier
-                    .background(if (selectedUserId.value == user.id) Color(43, 82, 120) else Color(23, 33, 43))
+                    .background(if (selectedUser.value == user) Color(43, 82, 120) else Color(23, 33, 43))
                     .fillMaxWidth()
-                    .selectable(user.id == selectedUserId.value,
+                    .selectable(user == selectedUser.value,
                         onClick = {
-                            if (selectedUserId.value != user.id) {
-                                selectedUserId.value = user.id
+                            if (selectedUser.value != user) {
+                                selectedUser.value = user
                             }
 
                             onUserClick(user)

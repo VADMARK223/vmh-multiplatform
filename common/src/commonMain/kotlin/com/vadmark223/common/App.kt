@@ -24,14 +24,13 @@ import com.vadmark223.common.view.Users
 @Composable
 fun App() {
     MaterialTheme(colors = darkThemeColors) {
-        val selectedUserId = remember { mutableStateOf(0) }
         val usersRepo: UsersRepo = UsersRepoImpl()
         val selectedUser = remember { mutableStateOf(usersRepo.getFirst()) }
         val messagesRepo: MessagesRepo = MessagesRepoImpl(usersRepo)
 
         Row {
             Users(
-                selectedUserId,
+                selectedUser,
                 repo = usersRepo,
                 modifier = Modifier
                     .weight(1.0f)
