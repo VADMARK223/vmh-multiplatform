@@ -15,10 +15,10 @@ class MessagesRepoImpl(usersRepo: UsersRepo) : MessagesRepo {
 
     init {
         usersRepo.items().forEach { user ->
-            userMessageMap[userMessageMap.size.toLong()] = createRandomMessages(user)
+            userMessageMap[userMessageMap.size.toLong() + 1] = createRandomMessages(user)
         }
 
-        messages.addAll(userMessageMap[0] ?: mutableStateListOf())
+        messages.addAll(userMessageMap[1] ?: mutableStateListOf())
     }
 
     private fun createRandomMessages(user: User): List<Message> {

@@ -14,7 +14,6 @@ import androidx.compose.ui.graphics.Color
 import com.vadmark223.common.repository.MessagesRepo
 import com.vadmark223.common.repository.MessagesRepoImpl
 import com.vadmark223.common.repository.UsersRepo
-import com.vadmark223.common.repository.UsersRepoImpl
 import com.vadmark223.common.resources.darkThemeColors
 import com.vadmark223.common.view.InputMessage
 import com.vadmark223.common.view.Messages
@@ -24,7 +23,6 @@ import com.vadmark223.common.view.Users
 @Composable
 fun App(usersRepo: UsersRepo) {
     MaterialTheme(colors = darkThemeColors) {
-
         val selectedUser = remember { mutableStateOf(usersRepo.getFirst()) }
         val messagesRepo: MessagesRepo = MessagesRepoImpl(usersRepo)
 
@@ -37,7 +35,6 @@ fun App(usersRepo: UsersRepo) {
                     .background(Color(14, 22, 33))
                     .fillMaxHeight(),
                 onUserClick = { user ->
-//                    selectedUser.value = user
                     messagesRepo.updateMessagesByUserId(user.id)
                 }
             )
