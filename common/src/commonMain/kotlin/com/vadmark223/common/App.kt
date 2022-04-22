@@ -22,9 +22,9 @@ import com.vadmark223.common.view.UserInfo
 import com.vadmark223.common.view.Users
 
 @Composable
-fun App() {
+fun App(usersRepo: UsersRepo) {
     MaterialTheme(colors = darkThemeColors) {
-        val usersRepo: UsersRepo = UsersRepoImpl()
+
         val selectedUser = remember { mutableStateOf(usersRepo.getFirst()) }
         val messagesRepo: MessagesRepo = MessagesRepoImpl(usersRepo)
 

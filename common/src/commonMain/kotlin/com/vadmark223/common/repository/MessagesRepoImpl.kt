@@ -11,11 +11,11 @@ import kotlin.random.Random
  */
 class MessagesRepoImpl(usersRepo: UsersRepo) : MessagesRepo {
     private val messages = mutableStateListOf<Message>()
-    private val userMessageMap = mutableMapOf<Int, List<Message>>()
+    private val userMessageMap = mutableMapOf<Long, List<Message>>()
 
     init {
         usersRepo.items().forEach { user ->
-            userMessageMap[userMessageMap.size] = createRandomMessages(user)
+            userMessageMap[userMessageMap.size.toLong()] = createRandomMessages(user)
         }
 
         messages.addAll(userMessageMap[0] ?: mutableStateListOf())
@@ -24,7 +24,7 @@ class MessagesRepoImpl(usersRepo: UsersRepo) : MessagesRepo {
     private fun createRandomMessages(user: User): List<Message> {
         val result = mutableStateListOf<Message>()
         for (x in 0..Random.nextInt(1, 20)) {
-            result.add(Message(x, "${user.fullName} $x"))
+            result.add(Message(x, "${user.lastName} $x"))
         }
 
         return result
@@ -42,12 +42,12 @@ class MessagesRepoImpl(usersRepo: UsersRepo) : MessagesRepo {
         messages.clear()
     }
 
-    override fun updateMessagesByUserId(userId: Int) {
+    override fun updateMessagesByUserId(userId: Long) {
         clearMessages()
         userMessageMap[userId]?.let { messages.addAll(it) }
     }
 
-    override fun messagesByUserId(userId: Int): List<Message> {
+    override fun messagesByUserId(userId: Long): List<Message> {
         return userMessageMap[userId]!!
     }
 }

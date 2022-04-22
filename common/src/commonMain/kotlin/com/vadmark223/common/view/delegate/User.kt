@@ -41,7 +41,7 @@ fun User(user: User, modifier: Modifier) {
 
             Column {
                 Text(
-                    text = user.fullName,
+                    text = user.lastName + " " + user.firstName,
                     style = MaterialTheme.typography.h6,
                     maxLines = 2,
                     overflow = TextOverflow.Ellipsis,

@@ -39,7 +39,7 @@ fun UserInfo(selectedUserState: MutableState<User>) {
                 val minutesAgoText =
                     if (selectedUser.minutesAgo == 0) "last seen recently" else "${selectedUser.minutesAgo} minutes ago"
                 Text(
-                    text = "${selectedUser.fullName} ($platformName)",
+                    text = "${selectedUser.lastName} ${selectedUser.firstName} ($platformName)",
                     style = MaterialTheme.typography.h6,
                     maxLines = 2,
                     overflow = TextOverflow.Ellipsis,

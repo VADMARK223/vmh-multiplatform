@@ -11,20 +11,12 @@ import kotlin.random.Random
 class UsersRepoImpl : UsersRepo {
     private val list = mutableStateListOf<User>()
 
-    init {
-        addUser("Васильев Евгений")
-        addUser("Головнев Андрей")
-        addUser("Доронин Герман")
-        addUser("Трищакин Михаил")
-        addUser("Анисимов Роман")
-        addUser("Станченко Иван")
-        addUser("Маркитанов Вадим")
-        addUser("Капустин Дмитрий")
-        addUser("Селиверстова Кристина")
+    override fun addUser(firstName: String, lastName: String) {
+        list.add(createUser(list.size.toLong(), firstName, lastName))
     }
 
-    private fun addUser(fullName: String) {
-        list.add(createUser(list.size, fullName))
+    override fun addUser(id:Long, firstName: String, lastName: String) {
+        list.add(createUser(id, firstName, lastName))
     }
 
     override fun items(): List<User> {
@@ -35,8 +27,8 @@ class UsersRepoImpl : UsersRepo {
         return list.first()
     }
 
-    override fun createUser(id: Int, fullName: String): User {
-        return User(id, fullName, Random.nextInt(0, 5))
+    override fun createUser(id: Long, firstName: String, lastName: String): User {
+        return User(id, firstName, lastName, Random.nextInt(0, 5))
     }
 
 }

@@ -23,6 +23,13 @@ kotlin {
             dependencies {
                 implementation(project(":common"))
                 implementation(compose.desktop.currentOs)
+                implementation("org.apache.logging.log4j:log4j-api:2.13.3")
+                implementation("org.apache.logging.log4j:log4j-core:2.13.3")
+                implementation("org.apache.logging.log4j:log4j-slf4j-impl:2.13.3")
+                implementation("org.postgresql:postgresql:42.3.4")
+                implementation("org.jetbrains.exposed:exposed-core:0.38.1")
+                implementation("org.jetbrains.exposed:exposed-dao:0.38.1")
+                implementation("org.jetbrains.exposed:exposed-jdbc:0.38.1")
             }
         }
         val jvmTest by getting
