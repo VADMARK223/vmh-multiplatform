@@ -31,7 +31,6 @@ kotlin {
                 implementation("org.jetbrains.exposed:exposed-jdbc:0.38.1")
             }
         }
-        val jvmTest by getting
     }
 }
 
