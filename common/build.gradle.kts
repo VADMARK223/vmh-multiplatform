@@ -22,9 +22,6 @@ kotlin {
                 api(compose.runtime)
                 api(compose.foundation)
                 api(compose.material)
-                implementation("org.jetbrains.exposed:exposed-core:0.38.1")
-                implementation("org.jetbrains.exposed:exposed-dao:0.38.1")
-                implementation("org.jetbrains.exposed:exposed-jdbc:0.38.1")
             }
         }
 

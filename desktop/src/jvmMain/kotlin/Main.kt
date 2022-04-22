@@ -21,7 +21,7 @@ fun main() = application {
     val usersRepo: UsersRepo = UsersRepoImpl()
     val database =
         Database.connect(
-            url = "jdbc:postgresql://localhost:5432/vdh",
+            url = "jdbc:postgresql://localhost:5432/vmh",
             driver = "org.postgresql.Driver",
             user = "postgres",
             password = "postgres"
